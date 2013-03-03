@@ -36,16 +36,8 @@ abstract class Model {
 		return Database.data.get(theClass.getSimpleName());
 	}
 	
-	public static ArrayList<Model> getAll(String theClassName) {
-		return Database.data.get(theClassName);
-	}
-	
-	public static Model delete(int id, Class theClass) {
-		return getAll(theClass.getSimpleName()).set(id, null);
-	}
-	
-	public static Model delete(int id, String theClassName) {
-		return getAll(theClassName).set(id, null);
+	public static <T extends Model> T delete(int id, Class<T> theClass) {
+		return theClass.cast(getAll(theClass).set(id, null));
 	}
 	
 	public static ArrayList<Model> find(Class theClass, HashMap<String, Comparable<Object>> parameters) {

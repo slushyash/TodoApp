@@ -13,7 +13,7 @@ public class Demo {
 		new User("sidd", "siddthekid").save();
 		new User("yash", "yashieslushie").save();
 		User.delete(0, User.class);
-		System.out.println(User.getAll().get(1));
+		System.out.println(((Object)User.getAll().get(1)).getClass().getSimpleName());
 		DefaultController.index();
 		//User.getCurrentModel();
 	}
