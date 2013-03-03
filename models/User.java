@@ -2,6 +2,7 @@ package newapp.models;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class User extends Model {
 	public String name;
@@ -24,7 +25,7 @@ public class User extends Model {
 		HashMap<String, Comparable<Object>> parameters = new HashMap<String, Comparable<Object>>();
 		parameters.put("name", (Comparable)name);
 		parameters.put("password", (Comparable)password);
-		ArrayList<Model> usersFound = User.find(User.class, parameters);
+		ArrayList<User> usersFound = User.find(User.class, parameters);
 		if(usersFound.size() == 0) {
 			return null;
 		} else {
@@ -41,7 +42,7 @@ public class User extends Model {
 		return (User)Model.delete(this.id, User.class);
 	}
 	
-	public static ArrayList<Model> find(Class theClass, HashMap<String, Comparable<Object>> parameters) {
-		return Model.find(User.class, parameters);
+	public static ArrayList<User> find(Class theClass, HashMap<String, Comparable<Object>> parameters) {
+		return (ArrayList<User>)(List<?>)Model.find(User.class, parameters);
 	}
 }

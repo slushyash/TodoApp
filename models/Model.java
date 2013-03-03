@@ -40,7 +40,7 @@ abstract class Model {
 		return theClass.cast(getAll(theClass).set(id, null));
 	}
 	
-	public static ArrayList<Model> find(Class theClass, HashMap<String, Comparable<Object>> parameters) {
+	public static ArrayList<? extends Model> find(Class theClass, HashMap<String, Comparable<Object>> parameters) {
 		// TODO hasone, hasmany, etc
 		// TODO optimize for ID
 		ArrayList<Model> matches = new ArrayList<Model>();
